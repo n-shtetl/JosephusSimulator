@@ -24,28 +24,36 @@
 
     <!-- Bootstrap grid setup -->
     <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <button id="play-button" class="btn btn-primary">Play</button>
-                <button id="reset" class="btn btn-primary">Reset</button>
-                <div id="slider-div">
-                    <label>Year: <span id="year">1800</span></label>
-                    <div id="date-slider"></div><br>
+        <div class="flex-wrapper">
+            <div class="row play-reset-container">
+                <div class="col-md-6">
+                    <button id="play-button" class="btn btn-primary">Play</button>
+                    <button id="reset" class="btn btn-primary">Reset</button>
+                    <div id="slider-div">
+                        <div id="date-slider"></div><br>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <select id="continent-select" class="form-control">
-                    <option selected value="All">All</option>
-                    <option value="europe">europe</option>
-                    <option value="africa">africa</option>
-                    <option value="asia">asia</option>
-                    <option value="americas">americas</option>
-                </select>
+            <div class="row">
+                <div id="chart-area"></div>  
             </div>
-        </div>
-        <div class="row">
-            <div id="chart-area"></div>  
-        </div>
+            <div class="simulation">
+                <div class="sliders">Josephus Simulation
+                    <div id="slider-div">
+                            <div class="n-slider-label">N: 1</div>
+                            <div id="n-slider"></div><br>
+                    </div>
+                    <div id="slider-div">
+                            <span class="k-slider-label">K: 1</span>
+                            <div id="k-slider"></div><br>
+                    </div>
+                    <button id="runSim" class="btn btn-primary">Run Simulation</button>
+                </div>
+                <div class="diagram"> 
+                    <div id="circleCanvas"></div>
+                </div>
+            </div>
+        </div> 
     </div>
 
 <!-- External JS libraries -->
@@ -56,6 +64,7 @@
 <script src="js/d3-tip.js"></script>
 <!-- Custom JS -->
 <script src="js/main.js"></script>
+<script src="js/circle.js"></script>
 
 </body>
 </html>
