@@ -25,6 +25,22 @@ function josephusSim(n,k) {
 	return eliminated;
 }
 
+function josephus(n,k) {
+	let arr = [],
+		eliminated = [];
+	for (let i = 0; i < n; i++) {
+		arr.push(i+1);
+	}
+	while (arr.length > 1) {
+		let index = arr.indexOf(arr[(k-1)%(arr.length)]);
+		eliminated.push(...arr.splice((k-1)%(arr.length), 1))
+		for (let j = 0; j < index; j++) {
+			arr.push(arr.shift());
+		}
+	}
+	return arr.pop();
+}
+
 function pointsOnCircle(num){
     var angle = (2 * Math.PI)/num;
     var points = [];
@@ -141,13 +157,18 @@ runSim
         console.log(eliminated);
         let circles = {...pointsOnCircle(n)};
         console.log(circles);
-        for (let i=0; i < eliminated.length-1; i++) {
+        let i = 0;
+        let interval = setInterval(function() {
+            if (i === eliminated.length-1) {
+                console.log(josephus(n,k))
+                let survivor = d3.select(`.idx${josephus(n,k)}`)
+                console.log(survivor);
+                survivor.attr('fill', 'red');
+                clearInterval(interval);
+                return;
+            }
             let circle1 = circles[eliminated[i]-1]
             let circle2 = circles[eliminated[i+1]-1]
-            // let t = transition()
-            //     .duration(750)
-            //     .ease(d3.easeLinear);
-            
             circleGroup.append('line')
                 .attr('x1', scale1(circle1.x))
                 .attr('y1', scale1(circle1.y))
@@ -156,27 +177,17 @@ runSim
                 .attr('stroke-width', 2)
                 .attr('stroke', 'black')
                 .classed('chord', true)
-                .transition()
-                .duration(1000)
-
-            circleGroup.append('line')
-                .attr('x1', 25)
-                .attr('y1', 15)
-                .attr('x2', 25)
-                .attr('y2', 15)
-                .attr('stroke-width', 8)
-                .transition()
-                .duration(1500)
-                .attr('x2', 400)
-                .attr('y2', 15)
-        }
-        // eliminated.forEach(function(index) {
-        //     debugger
-        //     let point = d3.select(`.idx${index}`)
-        //     setTimeout(function() {
-        //         point.attr('fill', 'red')
-        //     }, 250)
-        // })
+            i++;
+            
+        }, 100)
+        
+        // circleGroup.append('rect')
+        //     .attr('x', scale1(survivor.x))
+        //     .attr('y', scale1(survivor.y))
+        //     .attr('width', 20)
+        //     .attr('height', 20)
+        //     .attr('fill', 'red')
+        //     .translate('')
 	})
 
 
