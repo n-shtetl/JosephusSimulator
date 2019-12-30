@@ -151,6 +151,8 @@ nSlide.slider({
 
 runSim
 	.on("click", function() {
+        d3.selectAll(`.chord`).remove();
+        d3.selectAll(`[fill=red]`).attr('fill', 'black');
         let n = nSlide.slider("option", "value")
         let k = kSlide.slider("option", "value")
         let eliminated = josephusSim(n, k);
