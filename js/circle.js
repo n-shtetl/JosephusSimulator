@@ -180,14 +180,6 @@ runSim
             i++;
             
         }, 100)
-        
-        // circleGroup.append('rect')
-        //     .attr('x', scale1(survivor.x))
-        //     .attr('y', scale1(survivor.y))
-        //     .attr('width', 20)
-        //     .attr('height', 20)
-        //     .attr('fill', 'red')
-        //     .translate('')
 	})
 
-
+generateCircle(1);
