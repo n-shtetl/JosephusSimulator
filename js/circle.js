@@ -174,14 +174,18 @@ runSim
             circleGroup.append('line')
                 .attr('x1', scale1(circle1.x))
                 .attr('y1', scale1(circle1.y))
-                .attr('x2', scale1(circle2.x))
-                .attr('y2', scale1(circle2.y))
+                .attr('x2', scale1(circle1.x))
+                .attr('y2', scale1(circle1.y))
                 .attr('stroke-width', 2)
                 .attr('stroke', 'black')
                 .classed('chord', true)
+                .transition()
+                .duration(500)
+                .attr('x2', scale1(circle2.x))
+                .attr('y2', scale1(circle2.y))
             i++;
             
-        }, 100)
+        }, 1000)
 	})
 
 generateCircle(1);
