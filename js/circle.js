@@ -1,8 +1,11 @@
 let nSliderLabel = $('.n-slider-label');
 let kSliderLabel = $('.k-slider-label');
+let speedSliderLabel = $('.speed-slider-label');
 let kSlide = $("#k-slider");
 let nSlide = $("#n-slider");
-let runSim = $("#runSim");
+let speedSlide = $("#speed-slider");
+let runSim = $("#run-sim");
+let drawingSpeed, intervalLength;
 
 var size = 300;
 var dotSize = 15;
@@ -149,6 +152,17 @@ nSlide.slider({
 	}
 })
 
+speedSlide.slider({
+    max:50,
+    min: 1,
+    step: 1,
+    slide: function(event, ui) {
+        drawingSpeed = ui.value * 10;
+        intervalLength = drawingSpeed + 100;
+        return speedSliderLabel.text('Speed: ' + (50-ui.value));
+    }
+})
+
 runSim
 	.on("click", function() {
         d3.selectAll(`.chord`).remove();
@@ -180,12 +194,12 @@ runSim
                 .attr('stroke', 'black')
                 .classed('chord', true)
                 .transition()
-                .duration(500)
+                .duration(drawingSpeed)
                 .attr('x2', scale1(circle2.x))
                 .attr('y2', scale1(circle2.y))
             i++;
             
-        }, 1000)
+        }, intervalLength)
 	})
 
 generateCircle(1);

@@ -5,7 +5,7 @@
     <meta name="description" content="">
     <title>Gapminder</title>
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
     <!-- Custom styling -->
     <link rel="stylesheet" href="css/d3-tip.css">
     <link rel="stylesheet" href="css/style.css">
@@ -13,45 +13,55 @@
     <link rel="stylesheet" href="css/jquery-ui.min.css">
     <link rel="stylesheet" href="css/jquery-ui.structure.min.css">
     <link rel="stylesheet" href="css/jquery-ui.theme.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <nav class="navbar navbar-default">
-        <div class="container">
-            <!-- <a class="navbar-brand" href="#"><img id="logo" src="img/logo.png"></a>       -->
-        </div>
-    </nav>
-
     <!-- Bootstrap grid setup -->
+    <nav>
+        <img src="data/roman-jewish-war.gif"/>
+        <div class="title-text">Josephus Simulator</div>
+    </nav>
     <div class="container">
         <div class="flex-wrapper">
-            <div class="row play-reset-container">
-                <div class="col-md-6">
-                    <button id="play-button" class="btn btn-primary">Play</button>
-                    <button id="reset" class="btn btn-primary">Reset</button>
-                    <div id="slider-div">
-                        <div id="date-slider"></div><br>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div id="chart-area"></div>  
+            <div class="background-text">
+                During the first Roman-Jewish War, historian Flavius Josephus and his fellow soldiers
+                were besieged by Roman forces and, probably apocryphally, drew up a method of killing themselves
+                to avoid the humiliation of surrender. According to Josephus, they arranged themselves in a circle
+                and cut down every other person until there was only one left. Josephus calculated what position he needed
+                to be in to be the sole survivor. 
             </div>
             <div class="simulation">
                 <div class="sliders">Josephus Simulation
                     <div id="slider-div">
-                            <div class="n-slider-label">N: 1</div>
-                            <div id="n-slider"></div><br>
+                        <div class="n-slider-label">N: 1</div>
+                        <div id="n-slider"></div><br>
                     </div>
                     <div id="slider-div">
-                            <span class="k-slider-label">K: 1</span>
-                            <div id="k-slider"></div><br>
+                        <span class="k-slider-label">K: 1</span>
+                        <div id="k-slider"></div><br>
                     </div>
-                    <button id="runSim" class="btn btn-primary">Run Simulation</button>
+                    <div id="slider-div">
+                        <span class="speed-slider-label">Speed</span>
+                        <div id="speed-slider"></div><br>
+                    </div>
+                    <div id="run-sim">Run Simulation</div>
                 </div>
                 <div class="diagram"> 
                     <div id="circleCanvas"></div>
                 </div>
+            </div>
+            <div class="play-reset-container">
+                <div class="play-reset-buttons">
+                <div id="play-button">Play</div>
+                <div id="reset">Reset</div>
+                </div>
+                <div id="slider-div">
+                    <div id="date-slider"></div><br>
+                </div>
+            </div>
+            <div class="row">
+                <div id="chart-area"></div>  
             </div>
         </div> 
     </div>
@@ -59,7 +69,7 @@
 <!-- External JS libraries -->
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery-ui.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<!-- <script src="js/bootstrap.min.js"></script> -->
 <script src="js/d3.min.js"></script>
 <script src="js/d3-tip.js"></script>
 <!-- Custom JS -->
