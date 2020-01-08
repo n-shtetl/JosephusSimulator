@@ -9,13 +9,14 @@ nav img {
 	height:450px;
 	margin-bottom: 0;
 	display: block;
-	border: 2px solid black;
+	border: 1px solid black;
 }
 
 .container {
 	margin-left: 200px;
 	margin-right: 200px;
 	margin-top: 0;
+	padding-top: 25px;
 	background-color: white;
 	box-shadow: 3px 3px 3px #ccc, -3px 3px 3px #ccc;
 }
@@ -149,7 +150,8 @@ nav img {
 
 .background-text {
 	width: 80%;
-	margin: 0 auto;
+	margin-left: auto;
+	margin-right: auto;
 	border: 2px solid black;
-	
+	margin-bottom: 20px;
 }

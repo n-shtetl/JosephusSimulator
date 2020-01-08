@@ -159,7 +159,7 @@ speedSlide.slider({
     slide: function(event, ui) {
         drawingSpeed = ui.value * 10;
         intervalLength = drawingSpeed + 100;
-        return speedSliderLabel.text('Speed: ' + (50-ui.value));
+        return speedSliderLabel.text('Speed: ' + (51-ui.value));
     }
 })
 
