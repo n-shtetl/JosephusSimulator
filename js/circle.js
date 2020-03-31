@@ -135,7 +135,8 @@ let circleGroup = svgDoc.append('g')
 kSlide.slider({
 	max: 50,
 	min: 2,
-	step: 1,
+    step: 1,
+    value: 2,
 	slide: function(event, ui) {
         return kSliderLabel.text("K: " + ui.value);
 	}
@@ -144,7 +145,8 @@ kSlide.slider({
 nSlide.slider({
 	max: 50,
 	min: 1,
-	step: 1,
+    step: 1,
+    value: 5,
 	slide: function(event, ui) {
         nSliderLabel.text("N: " + ui.value);
         generateCircle(ui.value);
@@ -156,12 +158,22 @@ speedSlide.slider({
     max:50,
     min: 1,
     step: 1,
+    value: 10,
     slide: function(event, ui) {
         drawingSpeed = ui.value * 10;
         intervalLength = drawingSpeed + 100;
-        return speedSliderLabel.text('Speed: ' + (51-ui.value));
+        // return speedSliderLabel.text('Speed: ' + (51-ui.value));
+        return speedSliderLabel.text('Speed: ' + ui.value)
     }
 })
+
+if (!drawingSpeed) {
+    drawingSpeed = speedSlide.slider( "option", "value" ) * 10;
+}
+if (!intervalLength) {
+    intervalLength = drawingSpeed + 100;
+}
+
 
 runSim
 	.on("click", function() {
@@ -202,4 +214,4 @@ runSim
         }, intervalLength)
 	})
 
-generateCircle(1);
+generateCircle(5);

@@ -9,6 +9,8 @@
     <!-- Custom styling -->
     <link rel="stylesheet" href="css/d3-tip.css">
     <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <!-- Jquery UI-->
     <link rel="stylesheet" href="css/jquery-ui.min.css">
     <link rel="stylesheet" href="css/jquery-ui.structure.min.css">
@@ -18,10 +20,15 @@
 
 <body>
     <!-- Bootstrap grid setup -->
+    <img class="background-image" src="data/roman-jewish-war.gif">
 
     <div class="container">
         <div class="flex-wrapper">
-            <div class="background-text">
+            <div class="title">
+                <div class="title-text">Josephus Simulator</div>
+                <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-down" class="svg-inline--fa fa-arrow-down fa-w-14 arrow" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M413.1 222.5l22.2 22.2c9.4 9.4 9.4 24.6 0 33.9L241 473c-9.4 9.4-24.6 9.4-33.9 0L12.7 278.6c-9.4-9.4-9.4-24.6 0-33.9l22.2-22.2c9.5-9.5 25-9.3 34.3.4L184 343.4V56c0-13.3 10.7-24 24-24h32c13.3 0 24 10.7 24 24v287.4l114.8-120.5c9.3-9.8 24.8-10 34.3-.4z"></path></svg>
+            </div>
+            <div class="background-text hidden">
                 During the first Roman-Jewish War, historian Flavius Josephus and his fellow soldiers
                 were besieged by Roman forces. They withdrew into a cave, and probably apocryphally, drew up a method of killing themselves
                 to avoid the humiliation of surrender. According to Josephus, they arranged themselves in a circle
@@ -31,18 +38,18 @@
                 <br><br>The generalized, abstracted version of this problem is a common introductory problem in CS and discrete math courses. The first step in finding a general solution (1&le;k&le;n) is
                         playing with different values of n and k. 
             </div>
-            <div class="simulation">
+            <div class="simulation hidden">
                 <div class="sliders">Josephus Simulation
                     <div id="slider-div">
-                        <div class="n-slider-label">N: 1</div>
+                        <div class="n-slider-label">N: 5</div>
                         <div id="n-slider"></div><br>
                     </div>
                     <div id="slider-div">
-                        <span class="k-slider-label">K: 1</span>
+                        <span class="k-slider-label">K: 2</span>
                         <div id="k-slider"></div><br>
                     </div>
                     <div id="slider-div">
-                        <span class="speed-slider-label">Speed: 50</span>
+                        <span class="speed-slider-label">Speed: 10</span>
                         <div id="speed-slider"></div><br>
                     </div>
                     <div id="run-sim">Run Simulation</div>
@@ -51,17 +58,27 @@
                     <div id="circleCanvas"></div>
                 </div>
             </div>
-            <div class="play-reset-container">
-                <div class="play-reset-buttons">
-                <div id="play-button">Play</div>
-                <div id="reset">Reset</div>
+            <div class="chart hidden">
+                <div class="play-reset-container">
+                    <div class="play-reset-buttons">
+                        <div id="play-button">Play</div>
+                        <div id="reset">Reset</div>
+                    </div>
+                    <div id="slider-div" class="chart-slider">
+                        <div id="date-slider"></div><br>
+                    </div>
                 </div>
-                <div id="slider-div">
-                    <div id="date-slider"></div><br>
+                <div class="row">
+                    <div id="chart-area"></div>  
                 </div>
             </div>
-            <div class="row">
-                <div id="chart-area"></div>  
+            <div class="dots-container">
+                <div class="dots">
+                    <span style="color: red" class="dot" id="dot1">&#183</span>
+                    <span class="dot" id="dot2">&#183</span>
+                    <span class="dot" id="dot3">&#183</span>
+                    <span class="dot" id="dot4">&#183</span>
+                </div>
             </div>
         </div> 
     </div>

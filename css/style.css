@@ -2,6 +2,8 @@ body {
 	font-family: 'Oswald', sans-serif;
 	margin: 0 auto;
 	background-color: rgba(222, 222, 222, 0.5);
+	margin: 0;
+	padding: 0;
 }
 
 nav img {
@@ -15,10 +17,11 @@ nav img {
 .container {
 	margin-left: 200px;
 	margin-right: 200px;
-	margin-top: 0;
-	padding-top: 25px;
+	margin-top: 10vh;
+	height: 80vh;
+	/* padding-top: 25px; */
 	background-color: white;
-	box-shadow: 3px 3px 3px #ccc, -3px 3px 3px #ccc;
+	box-shadow: 3px 3px 3px 3px #ccc, -3px 3px 3px #ccc;
 }
 
 .title-text {
@@ -26,7 +29,7 @@ nav img {
 	left: 24.5%;
 	top: 20%;
 	font-size: 100px;
-	color: #000000
+	color: #000000;
 }
 
 #chart-area svg {
@@ -39,33 +42,17 @@ nav img {
 	display: block;
 	margin: 0 auto;
 	background-color: white;
+	padding-top: 10%;
 }
 
 #logo {
 	height:50px;
 }
 
-.modal {
-	display: none; /* Hidden by default */
-	position: fixed; /* Stay in place */
-	z-index: 1; /* Sit on top */
-	padding-top: 100px; /* Location of the box */
-	left: 0;
-	top: 0;
-	width: 100%; /* Full width */
-	height: 100%; /* Full height */
-	overflow: auto; /* Enable scroll if needed */
-	background-color: rgb(0,0,0); /* Fallback color */
-	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+.chart-slider {
+	margin-top: 33px;
 }
 
-.modal-content {
-	background-color: #fefefe;
-	margin: auto;
-	padding: 20px;
-	border: 1px solid #888;
-	width: 80%;
-}
 
 #date-slider {
 	margin-top: 10px;
@@ -89,12 +76,16 @@ nav img {
 }
 
 .simulation {
+	position: absolute;
+	left: 20%;
+	top: 20%;
 	display:flex;
 	align-items: center;
 	justify-content: center;
 	border: 2px solid black;
-	width: 80%;
+	width: 60%;
 	margin: 0 auto;
+	transition: opacity 2s;
 }
 
 .eliminated {
@@ -115,8 +106,11 @@ nav img {
 
 #play-button {
 	border: 3px solid #000000;
-	padding: 1% 5% 1% 5%;
+	padding: 0.5% 2.5% 0.5% 2.5%;
 	font-size: x-large;
+	position: absolute;
+	top: 10%;
+	left: 3%;
 }
 
 #play-button:hover {
@@ -125,8 +119,11 @@ nav img {
 
 #reset {
 	border: 3px solid #000000;
-	padding: 1% 5% 1% 5%;
+	padding: 0.5% 2.5% 0.5% 2.5%;
 	font-size: x-large;
+	position: absolute;
+	top: 10%;
+	left: 85%;
 }
 
 #run-sim {
@@ -134,6 +131,10 @@ nav img {
 	padding: 1% 5% 1% 5%;
 	font-size: x-large;
 	text-align: center;
+}
+
+#run-sim:hover {
+	cursor: pointer;
 }
 
 #reset:hover {
@@ -152,6 +153,72 @@ nav img {
 	width: 80%;
 	margin-left: auto;
 	margin-right: auto;
-	border: 2px solid black;
-	margin-bottom: 20px;
+	margin-bottom: 10%;
+	margin-top: 10px;
+	/* margin-bottom: 20px; */
+	/* visibility: hidden; */
+	/* height: 0px; */
+	transition: opacity 2s;
 }
+
+.hidden {
+	visibility: hidden;
+	opacity: 0;
+}
+
+.chart {
+	position: absolute;
+	left: 23%;
+	top: 10%;
+	transition: opacity 2s;
+}
+
+#play-button {
+	
+}
+
+.dot {
+	font-size: 4em;
+}
+
+.dot:hover {
+	cursor: pointer;
+}
+
+.dots-container {
+	position: absolute;
+	left: 47.5%;
+	top: 78%;
+}
+
+.background-image {
+	position: absolute;
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+	top: 0%;
+}
+
+.title {
+	transition: opacity 2s;
+}
+
+.arrow {
+	height: 20px;
+	width: 20px;
+	position: absolute;
+	left: 48.25%;
+	top: 78%;
+	animation: slide1 1s ease-in-out infinite;
+}
+
+@keyframes slide1 {
+	0%,
+	100% {
+	  transform: translate(0, 0);
+	}
+  
+	50% {
+	  transform: translate(0, 10px);
+	}
+  }

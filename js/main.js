@@ -231,8 +231,8 @@
 
 var margin = { left:80, right:20, top:50, bottom:100 };
 
-var width = 800 - margin.left - margin.right,
-	height = 500 - margin.top - margin.bottom;
+var width = 700 - margin.left - margin.right,
+	height = 400 - margin.top - margin.bottom;
 
 var flag = true;
 
@@ -282,7 +282,7 @@ var x = d3.scaleLinear()
 var y = d3.scaleLinear()
 	.range([height, 0])
 
-let k = 13;
+let k = 2;
 
 // $("#date-slider").slider({
 // 	max: 100,
@@ -345,6 +345,17 @@ function render() {
 	kLabel.text("K = " + k)
 }
 
+$("#date-slider").slider({
+	max: 128,
+	min: 2,
+	step: 1,
+	value: 2,
+	slide: function(event, ui) {
+		k = ui.value;
+		render();
+	}
+})
+
 $("#play-button")
 	.on("click", function() {
 		let button = $(this);
@@ -352,7 +363,8 @@ $("#play-button")
 			button.text("Pause");
 			interval = setInterval(function() {
 				k += 1;
-				if (k === 30) {
+				$("#date-slider").slider("value", k);
+				if (k === 32) {
 					k = 2;
 				}
 				render();
@@ -373,11 +385,92 @@ $("#date-slider").slider({
 	max: 128,
 	min: 2,
 	step: 1,
+	value: 2,
 	slide: function(event, ui) {
 		k = ui.value;
 		render();
 	}
 })
+
+let dot1 = $('#dot1')
+let dot2 = $('#dot2')
+let dot3 = $('#dot3')
+let dot4 = $('#dot4')
+
+let titleBox = $(".title")
+let backgroundText = $(".background-text");
+let simulationBox = $(".simulation");
+let chartBox = $(".chart");
+
+dot1.on("click", function() {
+	dot1.css("color", "red")
+	for (let i = 1; i < 5; i++) {
+		if (i === 1) {
+			continue;
+		} else {
+			$(`#dot${i}`).css("color", "black");
+		} 
+	}
+	if (titleBox.hasClass("hidden")) {
+		titleBox.removeClass("hidden");
+		simulationBox.addClass("hidden");
+		chartBox.addClass("hidden");
+		backgroundText.addClass("hidden");
+	}
+});
+
+dot2.on("click", function() {
+	dot2.css("color", "red")
+	for (let i = 1; i < 5; i++) {
+		if (i === 2) {
+			continue;
+		} else {
+			$(`#dot${i}`).css("color", "black");
+		} 
+	}
+	if (backgroundText.hasClass("hidden")) {
+		backgroundText.removeClass("hidden");
+		simulationBox.addClass("hidden");
+		chartBox.addClass("hidden");
+		titleBox.addClass("hidden");
+	}
+});
+
+dot3.on("click", function() {
+	dot3.css("color", "red");
+	for (let i = 1; i < 5; i++) {
+		if (i === 3) {
+			continue;
+		} else {
+			$(`#dot${i}`).css("color", "black");
+		} 
+	}
+	if (simulationBox.hasClass("hidden")) {
+		simulationBox.removeClass("hidden");
+		backgroundText.addClass("hidden");
+		chartBox.addClass("hidden");
+		titleBox.addClass("hidden");
+	}
+});
+
+dot4.on("click", function() {
+	dot4.css("color", "red");
+	for (let i = 1; i < 5; i++) {
+		if (i === 4) {
+			continue;
+		} else {
+			$(`#dot${i}`).css("color", "black");
+		} 
+	}
+	if (chartBox.hasClass("hidden")) {
+		chartBox.removeClass("hidden");
+		backgroundText.addClass("hidden");
+		simulationBox.addClass("hidden");
+		titleBox.addClass("hidden");
+	}
+});
+
+
 
 render();
 
