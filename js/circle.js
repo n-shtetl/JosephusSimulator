@@ -182,15 +182,11 @@ runSim
         let n = nSlide.slider("option", "value")
         let k = kSlide.slider("option", "value")
         let eliminated = josephusSim(n, k);
-        console.log(eliminated);
         let circles = {...pointsOnCircle(n)};
-        console.log(circles);
         let i = 0;
         let interval = setInterval(function() {
             if (i === eliminated.length-1) {
-                console.log(josephus(n,k))
                 let survivor = d3.select(`.idx${josephus(n,k)}`)
-                console.log(survivor);
                 survivor.attr('fill', 'red');
                 clearInterval(interval);
                 return;

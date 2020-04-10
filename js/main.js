@@ -225,7 +225,6 @@
 // 	return eliminated.concat(arr);
 // }
 
-// console.log(josephus(6,3));
 // // 5 4 6 2 3 1
 
 
