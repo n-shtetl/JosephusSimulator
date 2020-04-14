@@ -171,5 +171,6 @@ function render() {
 }
 ```
 ### Simple Slideshow
-The slide show feature 
+![slideshow](slideshow.png)
+It would be overkill to involve another JS framework just for the sake of having dynamic web components for this applet. The slideshow feature is accomplished simply with CSS and JQuery. JQuery onClick functions add CSS classes that add/remove visibility of each div, and CSS transitions achieve the ease-in/ease-out transitions.
 
