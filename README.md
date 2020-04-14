@@ -100,3 +100,4 @@ function generateCircle(num) {
     })
 }
 ```
+### Graphing Solution Values
