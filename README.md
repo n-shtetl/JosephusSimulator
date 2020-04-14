@@ -101,3 +101,75 @@ function generateCircle(num) {
 }
 ```
 ### Graphing Solution Values
+![chart](chart.gif)
+Chart is built using a standard D3 workflow. First we establish the margins our D3 group will fit in and the height and width of our chart:
+```
+var margin = { left:80, right:20, top:50, bottom:100 };
+
+var width = 700 - margin.left - margin.right,
+	height = 400 - margin.top - margin.bottom;
+```
+Then we create a chart area, our axes, and scales: 
+```
+var g = d3.select("#chart-area")
+    .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+		.attr("transform", "translate(" + margin.left + ", " + margin.top + ")");
+
+var xAxisGroup = g.append("g")
+.attr("class", "x axis")
+.attr("transform", "translate(0," + height +")");
+
+var yAxisGroup = g.append("g")
+	.attr("class", "y axis");
+	
+	...
+	
+var x = d3.scaleLinear()
+	.range([0, width])
+
+var y = d3.scaleLinear()
+	.range([height, 0])
+```
+Then our render function generates the data and appends our points to the chart area:
+```
+function render() {
+	
+	// Generate data
+	data = [{ 'values': [] }]
+	for (let i = 0; i < 128; i++) {
+		data[0]['values'].push({ 'n': i+1, 'jn': josephus(i+1, k), 'k': k })
+	}
+	// Set domains
+	x.domain([0, 128])
+	y.domain([0, 128])
+
+	var xAxisCall = d3.axisBottom(x)
+	xAxisGroup.call(xAxisCall);
+	
+	var yAxisCall = d3.axisLeft(y)
+	yAxisGroup.call(yAxisCall);
+	var circles = g.selectAll('circle')
+		.data(data[0]['values'], function(d) {
+			return d;
+		})
+
+	circles.exit().remove()
+	circles.enter()
+		.append('circle')
+		.attr('fill', 'black')
+		.attr('cy', function(d) { return y(d['jn']) })
+		.attr('r', 5)
+		.attr('cx', function(d) { return x(d['n']) })
+		// .on("mouseover", tip.show)
+		// .on("mouseout", tip.hide)
+		.merge(circles)
+
+	kLabel.text("K = " + k)
+}
+```
+### Simple Slideshow
+The slide show feature 
+
